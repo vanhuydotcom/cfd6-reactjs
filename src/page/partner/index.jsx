@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+
+import React, { useRef, useState } from 'react'
 import useFormValidate from '../../hook/useFormValidate'
 export function Partner() {
 
@@ -29,34 +30,12 @@ export function Partner() {
     }, {
 
     })
-    function onSubmit() {
-        let errorObject = {}
-        if (!form.name.trim()) {
-            errorObject.name = 'Please enter your name.'
-        }
-        if (!form.phone.trim()) {
-            errorObject.phone = 'Please enter your phone.'
 
-        } else if (!/(84|0[3|5|7|8|9])+([0-9]{8})\b/.test(form.phone)) {
-            errorObject.phone = 'Please enter a valid phone'
-        }
-        if (!form.email.trim()) {
-            errorObject.email = 'Please enter your email.'
-        } else if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(form.email)) {
-            errorObject.email = 'Please enter a valid email address'
-        }
-        if (form.website.trim() && !/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/.test(form.website)) {
-            errorObject.website = 'Please enter a valid website.'
-        }
-        if (!form.title.trim()) {
-            errorObject.title = 'Please enter your title.'
-        }
+    function onSubmit() {
+        let errorObject = check
         if (Object.keys(errorObject).length === 0) {
             console.log(form);
         }
-        // else {
-        //     setError(errorObject)
-        // }
     }
     // function inputOnChange(e) {
 
@@ -83,28 +62,28 @@ export function Partner() {
                         <p>Số điện thoại</p>
                         <input value={form.phone} name="phone" onChange={inputChange} type="text" placeholder="Số điện thoại" />
                         {
-                            error?.phone && <p className="error_text">{error.phone}</p>
+                            error?.phone && <p className="error_text">{error?.phone}</p>
                         }
                     </label>
                     <label>
                         <p>Email<span>*</span></p>
                         <input value={form.email} name="email" onChange={inputChange} type="text" placeholder="Email của bạn" />
                         {
-                            error?.email && <p className="error_text">{error.email}</p>
+                            error?.email && <p className="error_text">{error?.email}</p>
                         }
                     </label>
                     <label>
                         <p>Website</p>
                         <input value={form.website} name="website" onChange={inputChange} type="text" placeholder="Đường dẫn website http://" />
                         {
-                            error.website && <p className="error_text">{error.website}</p>
+                            error?.website && <p className="error_text">{error?.website}</p>
                         }
                     </label>
                     <label>
                         <p>Tiêu đề<span>*</span></p>
                         <input value={form.title} name="title" onChange={inputChange} type="text" placeholder="Tiêu đề liên hệ" />
                         {
-                            error.title && <p className="error_text">{error.title}</p>
+                            error?.title && <p className="error_text">{error?.title}</p>
                         }
                     </label>
                     <label>
