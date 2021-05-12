@@ -28,11 +28,50 @@ export function Partner() {
         title: "",
         content: ""
     }, {
+        rule: {
+            name: {
+                require: true
+            },
+            phone: {
+                require: true,
+                pattern: 'phone'
+            },
+            email: {
+                require: true,
+                pattern: 'email'
+            },
+            website: {
+                pattern: 'website'
+            },
+            title: {
+                require: true,
+            }
 
+        },
+        mes: {
+            name: {
+                require: 'Enter your name'
+            },
+            phone: {
+                require: ' Enter your phone',
+                pattern: 'Phone is not valid'
+            },
+            email: {
+                require: 'Enter your email',
+                pattern: 'Email is not valid'
+            },
+            website: {
+                pattern: 'Url is not valid'
+            },
+            tittle: {
+                require: 'Enter your title',
+            }
+
+        }
     })
 
     function onSubmit() {
-        let errorObject = check
+        let errorObject = check()
         if (Object.keys(errorObject).length === 0) {
             console.log(form);
         }

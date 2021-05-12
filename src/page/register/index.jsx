@@ -1,57 +1,59 @@
 import React, { useRef, useState } from "react"
-
+import useFormValidate from '../../hook/useFormValidate'
 export function Register() {
-    let [form, setForm] = useState({
-        name: '',
-        phone: '',
-        email: '',
-        facebook: '',
+    let { form, error, inputChange, check } = useFormValidate({
+        name: "",
+        phone: "",
+        email: "",
+        facebook: "",
 
-    })
-    let [error, setError] = useState({
-        name: '',
-        phone: '',
-        email: '',
-        facebook: '',
+    }, {
+        rule: {
+            name: {
+                require: true
+            },
+            phone: {
+                require: true,
+                pattern: 'phone'
+            },
+            email: {
+                require: true,
+                pattern: 'email'
+            },
+            facebook: {
+                require: true,
+                pattern: 'facebook'
+            },
 
+
+        },
+        mes: {
+            name: {
+                require: 'Enter your name'
+            },
+            phone: {
+                require: ' Enter your phone',
+                pattern: 'Phone is not valid'
+            },
+            email: {
+                require: 'Enter your email',
+                pattern: 'Email is not valid'
+            },
+            facebook: {
+                require: 'Enter your Url facebook',
+                pattern: 'Url facebook is not valid'
+            }
+
+
+        }
     })
+
     function onSubmit() {
-        let errorObject = {}
-        if (!form.name.trim()) {
-            errorObject.name = 'Please enter your name.'
-        }
-        if (!form.phone.trim()) {
-            errorObject.phone = 'Please enter your phone.'
-
-        } else if (!/(84|0[3|5|7|8|9])+([0-9]{8})\b/.test(form.phone)) {
-            errorObject.phone = 'Please enter a valid phone'
-        }
-        if (!form.email.trim()) {
-            errorObject.email = 'Please enter your email.'
-        } else if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(form.email)) {
-            errorObject.email = 'Please enter a valid email address'
-        }
-        if (form.facebook.trim() && !/(?:(?:http|https):\/\/)?(?:www.)?facebook.com\/(?:(?:\w)*#!\/)?(?:pages\/)?(?:[?\w\-]*\/)?(?:profile.php\?id=(?=\d.*))?([\w\-]*)?/.test(form.facebook)) {
-            errorObject.facebook = 'Please enter a valid facebook.'
-        }
-
+        let errorObject = check()
         if (Object.keys(errorObject).length === 0) {
             console.log(form);
         }
-        else {
-            setError(errorObject)
-        }
     }
-    function inputOnChange(e) {
-        let name = e.target.name
-        let value = e.target.value
-        setForm({
-            ...form,
-            [name]: value
-        })
-
-    }
-
     return (
         <main className="register-course" id="main">
             <section>
@@ -67,28 +69,28 @@ export function Register() {
                         <div className="form">
                             <label>
                                 <p>Họ và tên<span>*</span></p>
-                                <input value={form.name} name="name" onChange={inputOnChange} type="text" placeholder="Họ và tên bạn" />
+                                <input value={form.name} name="name" onChange={inputChange} type="text" placeholder="Họ và tên bạn" />
                                 {
                                     error.name && <p className="error_text">{error.name}</p>
                                 }
                             </label>
                             <label>
                                 <p>Số điện thoại<span>*</span></p>
-                                <input value={form.phone} name="phone" onChange={inputOnChange} type="text" placeholder="Số điện thoại" />
+                                <input value={form.phone} name="phone" onChange={inputChange} type="text" placeholder="Số điện thoại" />
                                 {
                                     error.phone && <p className="error_text">{error.phone}</p>
                                 }
                             </label>
                             <label>
                                 <p>Email<span>*</span></p>
-                                <input value={form.email} name="email" onChange={inputOnChange} type="text" placeholder="Email của bạn" />
+                                <input value={form.email} name="email" onChange={inputChange} type="text" placeholder="Email của bạn" />
                                 {
                                     error.email && <p className="error_text">{error.email}</p>
                                 }
                             </label>
                             <label>
                                 <p>URL Facebook<span>*</span></p>
-                                <input value={form.facebook} name="facebook" onChange={inputOnChange} type="text" placeholder="https://facebook.com" />
+                                <input value={form.facebook} name="facebook" onChange={inputChange} type="text" placeholder="https://facebook.com" />
                                 {
                                     error.facebook && <p className="error_text">{error.facebook}</p>
                                 }
