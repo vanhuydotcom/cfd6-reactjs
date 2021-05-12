@@ -1,4 +1,8 @@
+import React from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import useDeLayLink from '../hook/useDelayLink'
 export function Footer() {
+    let delayLink = useDeLayLink()
     return (
         <footer id="footer">
             <div className="container">
@@ -28,16 +32,16 @@ export function Footer() {
                         <nav>
                             <ul>
                                 <li>
-                                    <a href="#">Trang chủ</a>
+                                    <NavLink to="/">Trang chủ</NavLink>
                                 </li>
                                 <li>
-                                    <a href="#">Khóa học</a>
+                                    <NavLink to="/khoa-hoc">Khóa học</NavLink>
                                 </li>
                                 <li>
-                                    <a href="#">Thanh toán</a>
+                                    <NavLink to="/thanh-toan">Thanh toán</NavLink>
                                 </li>
                                 <li>
-                                    <a href="#">Điều khoản</a>
+                                    <NavLink to="/dieu-khoan">Điều khoản</NavLink>
                                 </li>
                             </ul>
                         </nav>

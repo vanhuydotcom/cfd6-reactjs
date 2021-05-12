@@ -13,22 +13,22 @@ export function Project() {
             </p>
                     <div className="list row">
                         <ProjectItem
-                            img_cover='img/project/project (1).jpg'
+                            img_cover='/img/project/project (1).jpg'
                             info_name='furnitown'
                             info_makeby='Hoàn thành với Trần Nghĩa'
                         />
                         <ProjectItem
-                            img_cover='img/project/project (2).jpg'
+                            img_cover='/img/project/project (2).jpg'
                             info_name='furnitown'
                             info_makeby='Hoàn thành với Trần Nghĩa'
                         />
                         <ProjectItem
-                            img_cover='img/project/project (3).jpg'
+                            img_cover='/img/project/project (3).jpg'
                             info_name='furnitown'
                             info_makeby='Hoàn thành với Trần Nghĩa'
                         />
                         <ProjectItem
-                            img_cover='img/project/project (4).jpg'
+                            img_cover='/img/project/project (4).jpg'
                             info_name='furnitown'
                             info_makeby='Hoàn thành với Trần Nghĩa'
                         />

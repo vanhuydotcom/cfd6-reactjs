@@ -3,7 +3,7 @@ export default function Info() {
         <div className="top-info">
             <div className="avatar">
                 {/* <span class="text">H</span> */}
-                <img src="img/avatar-lg.png" alt="" />
+                <img src="/img/avatar-lg.png" alt="" />
                 <div className="camera" />
             </div>
             <div className="name">trần nghĩa</div>

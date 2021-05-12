@@ -9,7 +9,7 @@ export function Section2() {
             your apps.</p>
                 <h2 className="title">giới thiệu về khóa học</h2>
                 <div className="cover">
-                    <img src="img/course-detail-img.png" alt="" />
+                    <img src="/img/course-detail-img.png" alt="" />
                 </div>
                 <h3 className="title">nội dung khóa học</h3>
                 <Accordian
@@ -68,7 +68,7 @@ export function Section2() {
                 <div className="teaches">
                     <div className="teacher">
                         <div className="avatar">
-                            <img src="img/avatar-lg.png" alt="" />
+                            <img src="/img/avatar-lg.png" alt="" />
                         </div>
                         <div className="info">
                             <div className="name">TRẦN NGHĨA</div>
@@ -89,11 +89,11 @@ export function Section2() {
                 </div>
                 <div className="bottom">
                     <div className="user">
-                        <img src="img/user-group-icon.png" alt="" /> 12 bạn đã đăng ký
+                        <img src="/img/user-group-icon.png" alt="" /> 12 bạn đã đăng ký
             </div>
                     <div className="btn main btn-register round">đăng ký</div>
                     <div className="btn-share btn overlay round btn-icon">
-                        <img src="img/facebook.svg" alt="" />
+                        <img src="/img/facebook.svg" alt="" />
                     </div>
                 </div>
             </div>

@@ -1,21 +1,33 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
+import useFormValidate from '../../hook/useFormValidate'
 export function Partner() {
 
-    let [form, setForm] = useState({
-        name: '',
-        phone: '',
-        email: '',
-        website: '',
-        title: '',
-        content: ''
-    })
-    let [error, setError] = useState({
-        name: '',
-        phone: '',
-        email: '',
-        website: '',
-        title: '',
-        content: ''
+    // let [form, setForm] = useState({
+    //     name: '',
+    //     phone: '',
+    //     email: '',
+    //     website: '',
+    //     title: '',
+    //     content: ''
+    // })
+    // let [error, setError] = useState({
+    //     name: '',
+    //     phone: '',
+    //     email: '',
+    //     website: '',
+    //     title: '',
+    //     content: ''
+    // })
+
+    let { form, error, inputChange, check } = useFormValidate({
+        name: "",
+        phone: "",
+        email: "",
+        website: "",
+        title: "",
+        content: ""
+    }, {
+
     })
     function onSubmit() {
         let errorObject = {}
@@ -42,19 +54,13 @@ export function Partner() {
         if (Object.keys(errorObject).length === 0) {
             console.log(form);
         }
-        else {
-            setError(errorObject)
-        }
+        // else {
+        //     setError(errorObject)
+        // }
     }
-    function inputOnChange(e) {
-        let name = e.target.name
-        let value = e.target.value
-        setForm({
-            ...form,
-            [name]: value
-        })
+    // function inputOnChange(e) {
 
-    }
+    // }
 
     return (
         <main className="register-course" id="main">
@@ -68,35 +74,35 @@ export function Partner() {
                 <div className="form">
                     <label>
                         <p>Họ và tên<span>*</span></p>
-                        <input value={form.name} name="name" onChange={inputOnChange} type="text" placeholder="Họ và tên bạn" />
+                        <input value={form.name} name="name" onChange={inputChange} type="text" placeholder="Họ và tên bạn" />
                         {
-                            error.name && <p className="error_text">{error.name}</p>
+                            error?.name && <p className="error_text">{error?.name}</p>
                         }
                     </label>
                     <label>
                         <p>Số điện thoại</p>
-                        <input value={form.phone} name="phone" onChange={inputOnChange} type="text" placeholder="Số điện thoại" />
+                        <input value={form.phone} name="phone" onChange={inputChange} type="text" placeholder="Số điện thoại" />
                         {
-                            error.phone && <p className="error_text">{error.phone}</p>
+                            error?.phone && <p className="error_text">{error.phone}</p>
                         }
                     </label>
                     <label>
                         <p>Email<span>*</span></p>
-                        <input value={form.email} name="email" onChange={inputOnChange} type="text" placeholder="Email của bạn" />
+                        <input value={form.email} name="email" onChange={inputChange} type="text" placeholder="Email của bạn" />
                         {
-                            error.email && <p className="error_text">{error.email}</p>
+                            error?.email && <p className="error_text">{error.email}</p>
                         }
                     </label>
                     <label>
                         <p>Website</p>
-                        <input value={form.website} name="website" onChange={inputOnChange} type="text" placeholder="Đường dẫn website http://" />
+                        <input value={form.website} name="website" onChange={inputChange} type="text" placeholder="Đường dẫn website http://" />
                         {
                             error.website && <p className="error_text">{error.website}</p>
                         }
                     </label>
                     <label>
                         <p>Tiêu đề<span>*</span></p>
-                        <input value={form.title} name="title" onChange={inputOnChange} type="text" placeholder="Tiêu đề liên hệ" />
+                        <input value={form.title} name="title" onChange={inputChange} type="text" placeholder="Tiêu đề liên hệ" />
                         {
                             error.title && <p className="error_text">{error.title}</p>
                         }

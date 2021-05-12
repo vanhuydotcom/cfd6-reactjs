@@ -9,8 +9,8 @@ export default function TitleTab() {
             <NavLink exact to={`${path}/`} onClick={delayLink}>Thông tin tài khoản</NavLink>
             <NavLink to={`${path}/khoa-hoc-cua-ban`}>Khóa học của bạn</NavLink>
             <NavLink to={`${path}/du-an-da-lam`}>Dự án đã làm</NavLink>
-            <NavLink to={`${path}/payment`}>Lịch sử thanh toán</NavLink>
-            <NavLink to={`${path}/coin`}>Quản lý COIN của tôi</NavLink>
+            <NavLink to={`${path}/thanh-toan`}>Lịch sử thanh toán</NavLink>
+            <NavLink to={`${path}/diem-thuong`}>Quản lý COIN của tôi</NavLink>
         </div>
     )
 }

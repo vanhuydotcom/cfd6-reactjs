@@ -15,14 +15,14 @@ export function MyTeam() {
                     <div className="list row">
                         <div className="item col-md-6 col-sm-6">
                             <Team
-                                img_cover='img/thumb-member.jpg'
+                                img_cover='/img/thumb-member.jpg'
                                 info_name='trần nghĩa'
                                 info_title='Founder & Creative Front-End Developer'
                             />
                         </div>
                         <div className="item col-md-6 col-sm-6">
                             <Team
-                                img_cover='img/thumb-member.jpg'
+                                img_cover='/img/thumb-member.jpg'
                                 info_name='trần nghĩa'
                                 info_title='Founder & Creative Front-End Developer'
                             />
@@ -30,63 +30,63 @@ export function MyTeam() {
                         </div>
                         <div className="item col-md-6 col-sm-6">
                             <Team
-                                img_cover='img/thumb-member.jpg'
+                                img_cover='/img/thumb-member.jpg'
                                 info_name='trần nghĩa'
                                 info_title='Founder & Creative Front-End Developer'
                             />
                         </div>
                         <div className="item col-md-6 col-sm-6">
                             <Team
-                                img_cover='img/thumb-member.jpg'
+                                img_cover='/img/thumb-member.jpg'
                                 info_name='trần nghĩa'
                                 info_title='Founder & Creative Front-End Developer'
                             />
                         </div>
                         <div className="item col-md-3 col-sm-4 col-xs-6">
                             <Team
-                                img_cover='img/thumb-member.jpg'
+                                img_cover='/img/thumb-member.jpg'
                                 info_name='trần nghĩa'
                                 info_title='Founder & Creative Front-End Developer'
                             />
                         </div>
                         <div className="item col-md-3 col-sm-4 col-xs-6">
                             <Team
-                                img_cover='img/thumb-member.jpg'
+                                img_cover='/img/thumb-member.jpg'
                                 info_name='trần nghĩa'
                                 info_title='Founder & Creative Front-End Developer'
                             />
                         </div>
                         <div className="item col-md-3 col-sm-4 col-xs-6">
                             <Team
-                                img_cover='img/thumb-member.jpg'
+                                img_cover='/img/thumb-member.jpg'
                                 info_name='trần nghĩa'
                                 info_title='Founder & Creative Front-End Developer'
                             />
                         </div>
                         <div className="item col-md-3 col-sm-4 col-xs-6">
                             <Team
-                                img_cover='img/thumb-member.jpg'
+                                img_cover='/img/thumb-member.jpg'
                                 info_name='trần nghĩa'
                                 info_title='Founder & Creative Front-End Developer'
                             />
                         </div>
                         <div className="item col-md-3 col-sm-4 col-xs-6">
                             <Team
-                                img_cover='img/thumb-member.jpg'
+                                img_cover='/img/thumb-member.jpg'
                                 info_name='trần nghĩa'
                                 info_title='Founder & Creative Front-End Developer'
                             />
                         </div>
                         <div className="item col-md-3 col-sm-4 col-xs-6">
                             <Team
-                                img_cover='img/thumb-member.jpg'
+                                img_cover='/img/thumb-member.jpg'
                                 info_name='trần nghĩa'
                                 info_title='Founder & Creative Front-End Developer'
                             />
                         </div>
                         <div className="item col-md-3 col-sm-4 col-xs-6">
                             <Team
-                                img_cover='img/thumb-member.jpg'
+                                img_cover='/img/thumb-member.jpg'
                                 info_name='trần nghĩa'
                                 info_title='Founder & Creative Front-End Developer'
                             />

@@ -7,10 +7,11 @@ export default function useDeLayLink() {
     function delayLink(e) {
         e.preventDefault()
         let href = e.currentTarget.getAttribute('href')
-        console.log(href);
+
         setTimeout(() => {
             history.push(href)
-        }, 1000)
+
+        }, 500)
         document.body.classList.remove('menu-is-show')
     }
     return delayLink

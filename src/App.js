@@ -15,6 +15,7 @@ import { Register } from './page/register'
 import './assets/scss/custom.scss'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { Team } from './page/team/component/team'
+import { Payment } from './page/payment'
 
 function App() {
   return (
@@ -29,11 +30,12 @@ function App() {
           <Route path='/chi-tiet-khoa-hoc' component={CourseDetail} />
           <Route path='/dang-ky-thanh-cong' component={Email} />
           <Route path='/cau-hoi-thuong-gap' component={Faq} />
-          <Route path='/lien-he-hop-tac' component={Partner} />
+          <Route path='/lien-he' component={Partner} />
           <Route path='/ca-nhan' component={Profile} />
           <Route path='/du-an' component={Project} />
           <Route path='/dang-ky' component={Register} />
           <Route path='/doi-ngu' component={MyTeam} />
+          <Route path='/thanh-toan' component={Payment} />
           <Route component={Error} />
         </Switch>
         <Footer />

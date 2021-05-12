@@ -1,9 +1,13 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+import useDeLayLink from '../hook/useDelayLink'
 export function CourceItem({ name, des, img, teach_name, teach_avatar, status }) {
     // status = 'dang-dien-ra | da-ket-thuc | sap-dien-ra'
+    let delayLink = useDeLayLink()
     return (
         <div className="col-md-4 course">
             <div className="wrap">
-                <a className="cover" href="#">
+                <Link className="cover" to="/chi-tiet-khoa-hoc">
                     <img src={img} alt="" />
                     {
                         status === 'da-ket-thuc' ? <span className="badge b1">Đã kết thúc</span> :
@@ -14,22 +18,22 @@ export function CourceItem({ name, des, img, teach_name, teach_avatar, status })
                     <div className="hover">
                         <div className="top">
                             <div className="user">
-                                <img src="img/icon-user-white.svg" alt="" />
+                                <img src="/img/icon-user-white.svg" alt="" />
       12
     </div>
                             <div className="heart">
-                                <img src="img/icon-heart.svg" alt="" /> 100
+                                <img src="/img/icon-heart.svg" alt="" /> 100
     </div>
                         </div>
                         <div className="share">
-                            <img src="img/icon-viewmore.svg" alt="" />
+                            <img src="/img/icon-viewmore.svg" alt="" />
                         </div>
                     </div>
-                </a>
+                </Link>
                 <div className="info">
-                    <a className="name" href="#">
+                    <Link className="name" to="/chi-tiet-khoa-hoc/">
                         {name}
-                    </a>
+                    </Link>
                     <p className="des">
                         {des}
                     </p>
@@ -37,11 +41,11 @@ export function CourceItem({ name, des, img, teach_name, teach_avatar, status })
                 <div className="bottom">
                     <div className="teacher">
                         <div className="avatar">
-                            <img src="img/avt.png" alt="" />
+                            <img src="/img/avt.png" alt="" />
                         </div>
                         <div className="name">{teach_name}</div>
                     </div>
-                    <div className="register-btn">Đăng Ký</div>
+                    <div className="register-btn"><Link to="/dang-ky" onClick={delayLink}>Đăng Ký</Link></div>
                 </div>
             </div>
         </div>

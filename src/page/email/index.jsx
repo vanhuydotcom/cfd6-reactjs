@@ -3,7 +3,7 @@ export function Email() {
         <div className="container">
             <div className="emailform" style={{ backgroundColor: '#f4f7f6', maxWidth: '590px', margin: '20px auto', fontFamily: 'arial', lineHeight: '24px' }}>
                 <div className="inner" style={{ padding: '50px' }}>
-                    <div className="logo"><img src="img/logo.svg" alt="" style={{ width: '100px', marginBottom: '10px' }} /></div>
+                    <div className="logo"><img src="/img/logo.svg" alt="" style={{ width: '100px', marginBottom: '10px' }} /></div>
                     <div className="content">
                         <h2>Đăng ký khóa học tại CFD.</h2>
                         <p>Chào mừng tân binh <strong>Trần Nghĩa</strong>,</p>

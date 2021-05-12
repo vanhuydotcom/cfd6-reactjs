@@ -17,45 +17,45 @@ export function CourseList() {
                         <CourceItem
                             name='Front-end căn bản'
                             des='One of the best corporate fashion brands in Sydney'
-                            img='img/img1.png'
+                            img='/img/img1.png'
                             teach_name='Trần Nghĩa'
-                            teach_avatar='img/avt.png'
+                            teach_avatar='/img/avt.png'
                             status='da-ket-thuc'
                         />
                         <CourceItem
                             name='React JS'
                             des='One of the best corporate fashion brands in Sydney'
-                            img='img/img2.png'
+                            img='/img/img2.png'
                             teach_name='Đặng Vương'
-                            teach_avatar='img/avt.png'
+                            teach_avatar='/img/avt.png'
                             status='dang-dien-ra' />
                         <CourceItem
                             name='Animation'
                             des='One of the best corporate fashion brands in Sydney'
-                            img='img/img3.png'
+                            img='/img/img3.png'
                             teach_name='Trần Nghĩa'
-                            teach_avatar='img/avt.png'
+                            teach_avatar='/img/avt.png'
                             status='sap-khai-giang' />
                         <CourceItem
                             name='Scss, Grunt JS và Boostrap 4'
                             des='One of the best corporate fashion brands in Sydney'
-                            img='img/img4.png'
+                            img='/img/img4.png'
                             teach_name='Trần Nghĩa'
-                            teach_avatar='img/avt.png'
+                            teach_avatar='/img/avt.png'
                             status='da-ket-thuc' />
                         <CourceItem
                             name='UX/UI Design'
                             des='One of the best corporate fashion brands in Sydney'
-                            img='img/img5.png'
+                            img='/img/img5.png'
                             teach_name='Trần Nghĩa'
-                            teach_avatar='img/avt.png'
+                            teach_avatar='/img/avt.png'
                             status='sap-khai-giang' />
                         <CourceItem
                             name='Web Responsive'
                             des='One of the best corporate fashion brands in Sydney'
-                            img='img/img6.png'
+                            img='/img/img6.png'
                             teach_name='Trần Nghĩa'
-                            teach_avatar='img/avt.png'
+                            teach_avatar='/img/avt.png'
                             status='da-ket-thuc' />
 
                     </div>
@@ -70,23 +70,23 @@ export function CourseList() {
                         <CourceItem
                             name='Scss, Grunt JS và Boostrap 4'
                             des='One of the best corporate fashion brands in Sydney'
-                            img='img/img4.png'
+                            img='/img/img4.png'
                             teach_name='Trần Nghĩa'
-                            teach_avatar='img/avt.png'
+                            teach_avatar='/img/avt.png'
                             status='da-ket-thuc' />
                         <CourceItem
                             name='UX/UI Design'
                             des='One of the best corporate fashion brands in Sydney'
-                            img='img/img5.png'
+                            img='/img/img5.png'
                             teach_name='Trần Nghĩa'
-                            teach_avatar='img/avt.png'
+                            teach_avatar='/img/avt.png'
                             status='sap-khai-giang' />
                         <CourceItem
                             name='Web Responsive'
                             des='One of the best corporate fashion brands in Sydney'
-                            img='img/img6.png'
+                            img='/img/img6.png'
                             teach_name='Trần Nghĩa'
-                            teach_avatar='img/avt.png'
+                            teach_avatar='/img/avt.png'
                             status='da-ket-thuc' />
                     </div>
                     <div className="text-deco">C</div>

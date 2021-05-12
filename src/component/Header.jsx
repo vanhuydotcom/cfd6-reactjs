@@ -3,6 +3,7 @@ import Reat, { useState, useRef } from 'react'
 import { Link, Route, useRouteMatch } from 'react-router-dom'
 import useDeLayLink from '../hook/useDelayLink'
 export function Header() {
+
     let delayLink = useDeLayLink()
     function menuToggle() {
         document.body.classList.toggle('menu-is-show')
@@ -37,9 +38,9 @@ export function Header() {
                             <div className="hamberger">
                             </div>
                             <div className="sub">
-                                <a href="#">Khóa học của tôi</a>
-                                <a href="#">Thông tin tài khoản</a>
-                                <a href="#">Đăng xuất</a>
+                                <Link to="/ca-nhan/khoa-hoc-cua-ban">Khóa học của tôi</Link>
+                                <Link to="/ca-nhan">Thông tin tài khoản</Link>
+                                <Link to="#">Đăng xuất</Link>
                             </div>
                         </div>
                         {/* <div class="not-login bg-none">

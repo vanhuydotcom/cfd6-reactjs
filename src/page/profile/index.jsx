@@ -30,8 +30,8 @@ export function Profile() {
                                 <Route exact path={`${path}/`} component={AccInfoTab} />
                                 <Route path={`${path}/khoa-hoc-cua-ban`} component={MyCourse} />
                                 <Route path={`${path}/du-an-da-lam`} component={MyProject} />
-                                <Route path={`${path}/payment`} component={MyPayment} />
-                                <Route path={`${path}/coin`} component={MyCoin} />
+                                <Route path={`${path}/thanh-toan`} component={MyPayment} />
+                                <Route path={`${path}/diem-thuong`} component={MyCoin} />
                             </Switch>
                         </div>
                     </div>

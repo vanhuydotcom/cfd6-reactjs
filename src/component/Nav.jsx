@@ -4,34 +4,37 @@ import { Link, Route, NavLink } from 'react-router-dom'
 import useDeLayLink from '../hook/useDelayLink'
 export const Nav = () => {
     let delayLink = useDeLayLink()
+    document.body.classList.remove('active')
     return ReatDOM.createPortal(<>
-        <nav className="nav" onClick={delayLink}>
+        <nav className="nav">
             <ul>
                 <li className="li_login" >
-                    <a href="#">Đăng nhập</a>
-                    <a href="#">Đăng ký</a>
+                    <NavLink to="#">Đăng nhập</NavLink>
+                    <NavLink to="#">Đăng ký</NavLink>
                 </li>
                 <li className="active">
-                    <NavLink exact to="/" >Trang chủ</NavLink>
+                    <NavLink exact to="/" onClick={delayLink} >Trang chủ</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/doi-ngu">CFD Team</NavLink>
+                    <NavLink to="/doi-ngu" onClick={delayLink}>CFD Team</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/khoa-hoc">Khóa Học</NavLink>
+                    <NavLink to="/khoa-hoc" onClick={delayLink}>Khóa Học</NavLink>
                 </li>
                 <li>
-                    <NavLink to="du-an">Dự Án</NavLink>
+                    <NavLink to="/du-an" onClick={delayLink}>Dự Án</NavLink>
                 </li>
                 <li>
-                    <NavLink to="lien-he">Liên hệ</NavLink>
+                    <NavLink to="/lien-he" onClick={delayLink}>Liên hệ</NavLink>
                 </li>
             </ul>
         </nav>
         <div className="overlay_nav" onClick={delayLink} />
 
     </>,
-        document.body)
+        document.body,
+
+    )
     // function removeMenu() {
     //     document.body.classList.remove('menu-is-show')
     // }

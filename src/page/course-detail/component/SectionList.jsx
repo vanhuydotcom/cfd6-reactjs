@@ -13,23 +13,23 @@ export function SectionList() {
                         <CourceItem
                             name='React JS'
                             des='One of the best corporate fashion brands in Sydney'
-                            img='img/img3.png'
+                            img='/img/img3.png'
                             teach_name='Đặng Vương'
-                            teach_avatar='img/avt.png'
+                            teach_avatar='/img/avt.png'
                             status='da-ket-thuc' />
                         <CourceItem
                             name='Animation'
                             des='One of the best corporate fashion brands in Sydney'
-                            img='img/img4.png'
+                            img='/img/img4.png'
                             teach_name='Trần Nghĩa'
-                            teach_avatar='img/avt.png'
+                            teach_avatar='/img/avt.png'
                             status='da-ket-thuc' />
                         <CourceItem
                             name='Scss, Grunt JS và Boostrap 4'
                             des='One of the best corporate fashion brands in Sydney'
-                            img='img/img5.png'
+                            img='/img/img5.png'
                             teach_name='Trần Nghĩa'
-                            teach_avatar='img/avt.png'
+                            teach_avatar='/img/avt.png'
                             status='da-ket-thuc' />
                     </div>
                 </div>
@@ -44,23 +44,23 @@ export function SectionList() {
                         <CourceItem
                             name='React JS'
                             des='One of the best corporate fashion brands in Sydney'
-                            img='img/img3.png'
+                            img='/img/img3.png'
                             teach_name='Đặng Vương'
-                            teach_avatar='img/avt.png'
+                            teach_avatar='/img/avt.png'
                             status='da-ket-thuc' />
                         <CourceItem
                             name='Animation'
                             des='One of the best corporate fashion brands in Sydney'
-                            img='img/img4.png'
+                            img='/img/img4.png'
                             teach_name='Trần Nghĩa'
-                            teach_avatar='img/avt.png'
+                            teach_avatar='/img/avt.png'
                             status='da-ket-thuc' />
                         <CourceItem
                             name='Scss, Grunt JS và Boostrap 4'
                             des='One of the best corporate fashion brands in Sydney'
-                            img='img/img5.png'
+                            img='/img/img5.png'
                             teach_name='Trần Nghĩa'
-                            teach_avatar='img/avt.png'
+                            teach_avatar='/img/avt.png'
                             status='da-ket-thuc' />
                     </div>
                 </div>
