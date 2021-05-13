@@ -1,11 +1,11 @@
 
-import ReatDOM from 'react-dom'
+import reactDOM from 'react-dom'
 import { Link, Route, NavLink } from 'react-router-dom'
 import useDeLayLink from '../hook/useDelayLink'
 export const Nav = () => {
     let delayLink = useDeLayLink()
     document.body.classList.remove('active')
-    return ReatDOM.createPortal(<>
+    return reactDOM.createPortal(<>
         <nav className="nav">
             <ul>
                 <li className="li_login" >

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import AccInfoTab from "./component/accInfoTab"
 import Info from "./component/info"
 import MyCoin from "./component/myCoin"
@@ -6,11 +6,14 @@ import MyCourse from "./component/myCourse"
 import MyPayment from "./component/myPayment"
 import MyProject from "./component/myProject"
 import TitleTab from "./component/titleTab"
-import { NavLink, Route, Switch, useHistory, useRouteMatch } from 'react-router-dom'
+import { NavLink, Redirect, Route, Switch, useHistory, useRouteMatch } from 'react-router-dom'
 import useDeLayLink from '../../hook/useDelayLink'
+import { Context } from '../../App'
 export function Profile() {
     let { path } = useRouteMatch()
     let delayLink = useDeLayLink()
+    let login = useContext(Context)
+    if (!login) return <Redirect path="/" />
     return (
         <main className="profile" id="main">
             <section>

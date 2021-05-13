@@ -1,13 +1,18 @@
 
-import Reat, { useState, useRef } from 'react'
+import Reat, { useState, useRef, useContext } from 'react'
 import { Link, Route, useRouteMatch } from 'react-router-dom'
 import useDeLayLink from '../hook/useDelayLink'
+import { Context } from '../App'
 export function Header() {
 
     let delayLink = useDeLayLink()
     function menuToggle() {
         document.body.classList.toggle('menu-is-show')
 
+    }
+    let { login, handleLogout } = useContext(Context)
+    function popupLogin() {
+        document.querySelector('.popup-login').style.display = 'flex'
     }
     return (
         <>
@@ -27,26 +32,36 @@ export function Header() {
                     </Link>
                     <div className="right">
                         <div className="have-login">
-                            <div className="account">
-                                <Link to="/ca-nhan" className="info">
-                                    <div className="name">Trần Lê Trọng Nghĩa</div>
-                                    <div className="avatar">
-                                        <img src="/img/avt.png" alt="" />
+                            {
+                                login ?
+                                    <>
+
+                                        <div className="account">
+                                            <Link to="/ca-nhan" className="info">
+                                                <div className="name">{login.name}</div>
+                                                <div className="avatar">
+                                                    <img src={login.avatar} alt="" />
+                                                </div>
+                                            </Link>
+                                        </div>
+                                        <div className="hamberger">
+                                        </div>
+                                        <div className="sub">
+                                            <Link to="/ca-nhan/khoa-hoc-cua-ban">Khóa học của tôi</Link>
+                                            <Link to="/ca-nhan">Thông tin tài khoản</Link>
+                                            <Link to="#" onClick={e => { e.preventDefault(); handleLogout() }}>Đăng xuất</Link>
+                                        </div>
+                                    </>
+                                    :
+
+                                    <div class="not-login bg-none">
+                                        <Link to="#" class="btn-register" onClick={popupLogin}>Đăng nhập</Link>
+                                        <Link to="login.html" class="btn main btn-open-login">Đăng ký</Link>
                                     </div>
-                                </Link>
-                            </div>
-                            <div className="hamberger">
-                            </div>
-                            <div className="sub">
-                                <Link to="/ca-nhan/khoa-hoc-cua-ban">Khóa học của tôi</Link>
-                                <Link to="/ca-nhan">Thông tin tài khoản</Link>
-                                <Link to="#">Đăng xuất</Link>
-                            </div>
+
+                            }
+
                         </div>
-                        {/* <div class="not-login bg-none">
-                  <a href="#" class="btn-register">Đăng nhập</a>
-                  <a href="login.html" class="btn main btn-open-login">Đăng ký</a>
-              </div> */}
                     </div>
                 </div>
             </header>

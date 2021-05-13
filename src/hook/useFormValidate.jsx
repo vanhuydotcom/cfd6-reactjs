@@ -18,11 +18,15 @@ export default function useFormValidate(initialForm, validate) {
     function check() {
         let errorObject = {}
         let { rule, mes } = validate
+        if (!mes) {
+            mes = {}
+        }
         for (let i in rule) {
             let r = rule[i]
             let m = mes[i] || {}
             if (r.require && !form[i]?.trim()) {
-                errorObject[i] = m?.require || 'Not valid'
+                errorObject[i] = m?.require || 'Not valid';
+                continue;
             }
             if (r.pattern && form[i]) {
                 let { pattern } = r
@@ -33,6 +37,14 @@ export default function useFormValidate(initialForm, validate) {
                 if (pattern === 'facebook') pattern = facebookPattern
                 if (!pattern?.test(form[i])) {
                     errorObject[i] = m?.pattern || 'Not valid'
+                }
+            }
+            if (r.min) {
+                if (form[i].length < r.min) {
+                    errorObject[i] = m?.min || `Passwords must be at least ${r.min} characters`
+                } else if (form[i].length > r.max) {
+                    errorObject[i] = m?.max || `Passwords must be at most ${r.max} characters`
+
                 }
             }
         }
