@@ -1,11 +1,30 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
+import { useDispatch } from "react-redux"
 import useFormValidate from '../../hook/useFormValidate'
-export function Register() {
+import CourseApi from "../../service/courseApi"
+import { RegisterAction } from '../../redux/action/courseAction'
+import { useParams } from "react-router"
+
+
+
+
+export function Register({ data }) {
+    let { slug } = useParams()
+    let [ListDetail, setListDetail] = useState({
+        data: []
+    })
+    useEffect(() => {
+        CourseApi.ListDetail(slug)
+            .then(res => {
+                setListDetail(res)
+            })
+    }, [])
+    console.log(data);
     let { form, error, inputChange, check } = useFormValidate({
         name: "",
         phone: "",
         email: "",
-        facebook: "",
+        fb: "",
 
     }, {
         rule: {
@@ -20,7 +39,7 @@ export function Register() {
                 require: true,
                 pattern: 'email'
             },
-            facebook: {
+            fb: {
                 require: true,
                 pattern: 'facebook'
             },
@@ -39,7 +58,7 @@ export function Register() {
                 require: 'Enter your email',
                 pattern: 'Email is not valid'
             },
-            facebook: {
+            fb: {
                 require: 'Enter your Url facebook',
                 pattern: 'Url facebook is not valid'
             }
@@ -47,24 +66,42 @@ export function Register() {
 
         }
     })
+    let dispatch = useDispatch()
+    let [registerError, setRegisterError] = useState(null)
 
-    function onSubmit() {
+
+
+    async function onSubmit() {
         let errorObject = check()
         if (Object.keys(errorObject).length === 0) {
-            console.log(form);
+            let res = await CourseApi.CourseRegister({
+                name: form.name,
+                phone: form.phone,
+                email: form.email,
+                fb: form.fb,
+            })
+            if (res.data) {
+                dispatch(RegisterAction(res.data))
+
+            }
+            else if (res.error) {
+                setRegisterError(res.error)
+            }
+            console.log(data);
         }
     }
+
     return (
         <main className="register-course" id="main">
             <section>
                 <div className="container">
                     <div className="wrap container">
                         <div className="main-sub-title">ĐĂNG KÝ</div>
-                        <h1 className="main-title">Thực chiến front-end căn bản </h1>
+                        <h1 className="main-title">{data?.title}</h1>
                         <div className="main-info">
-                            <div className="date"><strong>Khai giảng:</strong> 15/11/2020</div>
+                            <div className="date"><strong>Khai giảng:</strong>{data?.opening_time}</div>
                             <div className="time"><strong>Thời lượng:</strong> 18 buổi</div>
-                            <div className="time"><strong>Học phí:</strong> 6.000.000 VND</div>
+                            <div className="time"><strong>Học phí:</strong> {data?.money} VND</div>
                         </div>
                         <div className="form">
                             <label>
@@ -90,9 +127,9 @@ export function Register() {
                             </label>
                             <label>
                                 <p>URL Facebook<span>*</span></p>
-                                <input value={form.facebook} name="facebook" onChange={inputChange} type="text" placeholder="https://facebook.com" />
+                                <input value={form.fb} name="fb" onChange={inputChange} type="text" placeholder="https://facebook.com" />
                                 {
-                                    error.facebook && <p className="error_text">{error.facebook}</p>
+                                    error.fb && <p className="error_text">{error.fb}</p>
                                 }
                             </label>
                             <label className="disable">

@@ -1,6 +1,7 @@
-import { CourceItem } from "../../../component";
+import { data } from "jquery";
+import { CourseItem } from "../../../component";
 
-export function SectionList() {
+export function SectionList({ data }) {
     return (
         <>
             <section className="section-3">
@@ -10,27 +11,7 @@ export function SectionList() {
                         <h2 className="main-title">THÀNH VIÊN</h2>
                     </div>
                     <div className="list row">
-                        <CourceItem
-                            name='React JS'
-                            des='One of the best corporate fashion brands in Sydney'
-                            img='/img/img3.png'
-                            teach_name='Đặng Vương'
-                            teach_avatar='/img/avt.png'
-                            status='da-ket-thuc' />
-                        <CourceItem
-                            name='Animation'
-                            des='One of the best corporate fashion brands in Sydney'
-                            img='/img/img4.png'
-                            teach_name='Trần Nghĩa'
-                            teach_avatar='/img/avt.png'
-                            status='da-ket-thuc' />
-                        <CourceItem
-                            name='Scss, Grunt JS và Boostrap 4'
-                            des='One of the best corporate fashion brands in Sydney'
-                            img='/img/img5.png'
-                            teach_name='Trần Nghĩa'
-                            teach_avatar='/img/avt.png'
-                            status='da-ket-thuc' />
+
                     </div>
                 </div>
             </section>
@@ -41,27 +22,35 @@ export function SectionList() {
                         <h2 className="main-title">Liên quan</h2>
                     </div>
                     <div className="list row">
-                        <CourceItem
-                            name='React JS'
-                            des='One of the best corporate fashion brands in Sydney'
-                            img='/img/img3.png'
-                            teach_name='Đặng Vương'
-                            teach_avatar='/img/avt.png'
-                            status='da-ket-thuc' />
-                        <CourceItem
-                            name='Animation'
-                            des='One of the best corporate fashion brands in Sydney'
-                            img='/img/img4.png'
-                            teach_name='Trần Nghĩa'
-                            teach_avatar='/img/avt.png'
-                            status='da-ket-thuc' />
-                        <CourceItem
-                            name='Scss, Grunt JS và Boostrap 4'
-                            des='One of the best corporate fashion brands in Sydney'
-                            img='/img/img5.png'
-                            teach_name='Trần Nghĩa'
-                            teach_avatar='/img/avt.png'
-                            status='da-ket-thuc' />
+                        {
+                            data?.map((value, i) =>
+                                <div className="col-md-4 course">
+                                    <div className="wrap">
+                                        <a href="#" className="cover">
+                                            <img src={value.thumbnail.link} alt="" />
+                                        </a>
+                                        <div className="info">
+                                            <a className="name" href="#">
+                                                {value.title}
+                                            </a>
+                                            <p className="des">
+                                                {value.short_description}
+                                            </p>
+                                        </div>
+                                        <div className="bottom">
+                                            <div className="teacher">
+                                                <div className="avatar">
+                                                    <img src={value.teacher.avatar} alt="" />
+                                                </div>
+                                                <div className="name">{value.teacher.title}</div>
+                                            </div>
+                                            <div className="register-btn">Đăng Ký</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        }
+
                     </div>
                 </div>
             </section>

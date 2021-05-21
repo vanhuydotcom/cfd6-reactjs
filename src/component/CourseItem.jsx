@@ -1,17 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import useDeLayLink from '../hook/useDelayLink'
-export function CourceItem({ name, des, img, teach_name, teach_avatar, status }) {
+export function CourseItem({ title, short_description, thumbnail, teacher, course_status, slug }) {
     // status = 'dang-dien-ra | da-ket-thuc | sap-dien-ra'
     let delayLink = useDeLayLink()
     return (
         <div className="col-md-4 course">
             <div className="wrap">
-                <Link className="cover" to="/chi-tiet-khoa-hoc">
-                    <img src={img} alt="" />
+                <Link className="cover" to={`/chi-tiet-khoa-hoc/${slug}`}>
+                    <img src={thumbnail.link} alt="" />
                     {
-                        status === 'da-ket-thuc' ? <span className="badge b1">Đã kết thúc</span> :
-                            status === 'dang-dien-ra' ? <span className="badge b2">Đang diễn ra</span> :
+                        course_status === 'da-ket-thuc' ? <span className="badge b1">Đã kết thúc</span> :
+                            course_status === 'dang-dien-ra' ? <span className="badge b2">Đang diễn ra</span> :
                                 <span className="badge b3">Sắp diễn ra</span>
                     }
 
@@ -31,21 +31,21 @@ export function CourceItem({ name, des, img, teach_name, teach_avatar, status })
                     </div>
                 </Link>
                 <div className="info">
-                    <Link className="name" to="/chi-tiet-khoa-hoc/">
-                        {name}
+                    <Link className="name" to={`/chi-tiet-khoa-hoc/${slug}`}>
+                        {title}
                     </Link>
                     <p className="des">
-                        {des}
+                        {short_description}
                     </p>
                 </div>
                 <div className="bottom">
                     <div className="teacher">
                         <div className="avatar">
-                            <img src="/img/avt.png" alt="" />
+                            <img src={teacher.avatar.link} alt="" />
                         </div>
-                        <div className="name">{teach_name}</div>
+                        <div className="name">{teacher.title}</div>
                     </div>
-                    <div className="register-btn"><Link to="/dang-ky" onClick={delayLink}>Đăng Ký</Link></div>
+                    <div className="register-btn"><Link to={`/dang-ky/${slug}`} onClick={delayLink}>Đăng Ký</Link></div>
                 </div>
             </div>
         </div>

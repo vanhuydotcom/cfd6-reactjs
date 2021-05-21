@@ -9,10 +9,12 @@ import TitleTab from "./component/titleTab"
 import { NavLink, Redirect, Route, Switch, useHistory, useRouteMatch } from 'react-router-dom'
 import useDeLayLink from '../../hook/useDelayLink'
 import { Context } from '../../App'
+import { useSelector } from 'react-redux'
 export function Profile() {
     let { path } = useRouteMatch()
     let delayLink = useDeLayLink()
-    let login = useContext(Context)
+    // let { login } = useContext(Context)
+    let { login } = useSelector(store => store.auth)
     if (!login) return <Redirect path="/" />
     return (
         <main className="profile" id="main">

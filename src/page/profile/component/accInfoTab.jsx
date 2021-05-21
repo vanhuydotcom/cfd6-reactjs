@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react'
+import { useSelector } from 'react-redux';
 import useFormValidate from '../../../hook/useFormValidate';
 export default function AccInfoTab() {
-    let { form, error, inputChange, check } = useFormValidate({
-        name: "",
-        phone: "",
-        email: "",
-        facebook: "",
+    let { login } = useSelector(state => state.auth)
+    console.log(login)
 
+    let { form, error, inputChange, check } = useFormValidate({
+        ...login
     }, {
         rule: {
             name: {
@@ -20,7 +20,7 @@ export default function AccInfoTab() {
                 require: true,
                 pattern: 'email'
             },
-            facebook: {
+            fb: {
                 require: true,
                 pattern: 'website'
             }
@@ -78,9 +78,9 @@ export default function AccInfoTab() {
             </label>
             <label>
                 <p>Facebook<span>*</span></p>
-                <input value={form.facebook} name="facebook" onChange={inputChange} type="text" placeholder="Facebook url" />
+                <input value={form.fb} name="facebook" onChange={inputChange} type="text" placeholder="Facebook url" />
                 {
-                    error.facebook && <p className="error_text">{error.facebook}</p>
+                    error.fb && <p className="error_text">{error.fb}</p>
                 }
 
             </label>

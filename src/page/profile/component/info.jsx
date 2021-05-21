@@ -1,7 +1,9 @@
 import { useContext } from 'react'
+import { useSelector } from 'react-redux'
 import { Context } from '../../../App'
 export default function Info() {
-    let { login } = useContext(Context)
+    // let { login } = useContext(Context)
+    let { login } = useSelector(store => store.auth)
     return (
         <div className="top-info">
             <div className="avatar">

@@ -1,8 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import reactDom from 'react-dom'
 import { Context } from '../App'
 import useFormValidate from '../hook/useFormValidate'
-
+import { useSelector, useDispatch } from 'react-redux'
+import Auth from './../service/auth'
+import { loginAction } from '../redux/action/authAction'
 
 export default function PopupLogin() {
     let { form, error, inputChange, check } = useFormValidate({
@@ -32,21 +34,37 @@ export default function PopupLogin() {
         }
     }
     )
-    let { handleLogin } = useContext(Context)
+    // let { handleLogin } = useContext(Context)
+    let dispatch = useDispatch()
+    let [loginError, setLoginError] = useState(null)
     function closePopup() {
         document.querySelector('.popup-login').style.display = 'none'
 
     }
-    function loginHandle() {
+    async function loginHandle() {
         let errorObject = check()
         if (Object.keys(errorObject).length === 0) {
-            let res = handleLogin(form.username, form.password)
-            if (res) {
-                alert(res)
-            } else {
+            // let res = await handleLogin(form.username, form.password)
+            // if (res.success) {
+            //     closePopup()
+            // } else if (res.error) {
+            //     setLoginError(res.error)
+            // }
+            let res = await Auth.login({
+                username: form.username,
+                password: form.password
+            })
+            if (res.data) {
+                // dispatch({
+                //     type: 'LOGIN',
+                //     payload: res.data
+                // })
+                dispatch(loginAction(res.data))
                 closePopup()
             }
-
+            else if (res.error) {
+                setLoginError(res.error)
+            }
         }
     }
 
@@ -60,6 +78,7 @@ export default function PopupLogin() {
                     {
                         error.username && <p className="error_text">{error.username}</p>
                     }
+                    {loginError && <p className="error_text">{loginError}</p>}
                     <input value={form.password} name='password' onChange={inputChange} type="password" placeholder="Mật khẩu" />
                     {
                         error.password && <p className="error_text">{error.password}</p>

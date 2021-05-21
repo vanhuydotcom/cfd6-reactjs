@@ -1,6 +1,6 @@
-import { CourceItem } from "../../../component";
+import { CourseItem } from "../../../component";
 
-export function CourseList() {
+export function CourseList({ online, offline }) {
     return (
         <>
             <section className="section-courseoffline">
@@ -14,50 +14,12 @@ export function CourseList() {
                         <h2 className="main-title">Khóa học Offline</h2>
                     </div>
                     <div className="list row">
-                        <CourceItem
-                            name='Front-end căn bản'
-                            des='One of the best corporate fashion brands in Sydney'
-                            img='/img/img1.png'
-                            teach_name='Trần Nghĩa'
-                            teach_avatar='/img/avt.png'
-                            status='da-ket-thuc'
-                        />
-                        <CourceItem
-                            name='React JS'
-                            des='One of the best corporate fashion brands in Sydney'
-                            img='/img/img2.png'
-                            teach_name='Đặng Vương'
-                            teach_avatar='/img/avt.png'
-                            status='dang-dien-ra' />
-                        <CourceItem
-                            name='Animation'
-                            des='One of the best corporate fashion brands in Sydney'
-                            img='/img/img3.png'
-                            teach_name='Trần Nghĩa'
-                            teach_avatar='/img/avt.png'
-                            status='sap-khai-giang' />
-                        <CourceItem
-                            name='Scss, Grunt JS và Boostrap 4'
-                            des='One of the best corporate fashion brands in Sydney'
-                            img='/img/img4.png'
-                            teach_name='Trần Nghĩa'
-                            teach_avatar='/img/avt.png'
-                            status='da-ket-thuc' />
-                        <CourceItem
-                            name='UX/UI Design'
-                            des='One of the best corporate fashion brands in Sydney'
-                            img='/img/img5.png'
-                            teach_name='Trần Nghĩa'
-                            teach_avatar='/img/avt.png'
-                            status='sap-khai-giang' />
-                        <CourceItem
-                            name='Web Responsive'
-                            des='One of the best corporate fashion brands in Sydney'
-                            img='/img/img6.png'
-                            teach_name='Trần Nghĩa'
-                            teach_avatar='/img/avt.png'
-                            status='da-ket-thuc' />
-
+                        {
+                            offline.map((value, i) => <CourseItem
+                                key={value.slug}
+                                {...value}
+                            />)
+                        }
                     </div>
                 </div>
             </section>
@@ -67,27 +29,33 @@ export function CourseList() {
                         <h2 className="main-title">Khóa học Online</h2>
                     </div>
                     <div className="list row">
-                        <CourceItem
+                        {
+                            online.map((value, i) => <CourseItem
+                                key={value.slug}
+                                {...value}
+                            />)
+                        }
+                        {/* <CourseItem
                             name='Scss, Grunt JS và Boostrap 4'
                             des='One of the best corporate fashion brands in Sydney'
                             img='/img/img4.png'
                             teach_name='Trần Nghĩa'
                             teach_avatar='/img/avt.png'
                             status='da-ket-thuc' />
-                        <CourceItem
+                        <CourseItem
                             name='UX/UI Design'
                             des='One of the best corporate fashion brands in Sydney'
                             img='/img/img5.png'
                             teach_name='Trần Nghĩa'
                             teach_avatar='/img/avt.png'
                             status='sap-khai-giang' />
-                        <CourceItem
+                        <CourseItem
                             name='Web Responsive'
                             des='One of the best corporate fashion brands in Sydney'
                             img='/img/img6.png'
                             teach_name='Trần Nghĩa'
                             teach_avatar='/img/avt.png'
-                            status='da-ket-thuc' />
+                            status='da-ket-thuc' /> */}
                     </div>
                     <div className="text-deco">C</div>
                 </div>

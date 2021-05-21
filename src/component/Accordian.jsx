@@ -1,11 +1,21 @@
-export function Accordian({ date, title, content }) {
+import { useEffect, useRef } from "react"
+import $ from 'jquery'
+export function Accordian({ index, title, content, active, clickAccdian }) {
+    let ref = useRef()
+    useEffect(() => {
+        if (active) {
+            $(ref.current).slideDown(200)
+        } else {
+            $(ref.current).slideUp(200)
+        }
+    }, [active])
     return (
-        <div className="accordion">
+        <div className="accordion" onClick={clickAccdian}>
             <div className="accordion__title">
-                <div className="date">{date}</div>
+                <div className="date">Ngày {index}</div>
                 <h3>{title}</h3>
             </div>
-            <div className="content">
+            <div ref={ref} className="content">
                 {content}
             </div>
         </div>

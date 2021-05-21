@@ -3,16 +3,24 @@ import Reat, { useState, useRef, useContext } from 'react'
 import { Link, Route, useRouteMatch } from 'react-router-dom'
 import useDeLayLink from '../hook/useDelayLink'
 import { Context } from '../App'
+import { useSelector, useDispatch } from 'react-redux'
+import { logoutAction } from '../redux/action/authAction'
+import LOGOUT from '../redux/type'
 export function Header() {
-
+    let { login } = useSelector(store => store.auth)
+    let dispatch = useDispatch()
     let delayLink = useDeLayLink()
     function menuToggle() {
         document.body.classList.toggle('menu-is-show')
 
     }
-    let { login, handleLogout } = useContext(Context)
+    // let { handleLogout } = useContext(Context)
     function popupLogin() {
         document.querySelector('.popup-login').style.display = 'flex'
+    }
+    function logout(e) {
+        e.preventDefault()
+        dispatch(logoutAction())
     }
     return (
         <>
@@ -49,7 +57,7 @@ export function Header() {
                                         <div className="sub">
                                             <Link to="/ca-nhan/khoa-hoc-cua-ban">Khóa học của tôi</Link>
                                             <Link to="/ca-nhan">Thông tin tài khoản</Link>
-                                            <Link to="#" onClick={e => { e.preventDefault(); handleLogout() }}>Đăng xuất</Link>
+                                            <Link to="#" onClick={logout}>Đăng xuất</Link>
                                         </div>
                                     </>
                                     :
