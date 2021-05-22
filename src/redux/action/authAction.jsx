@@ -1,5 +1,4 @@
-import LOGIN from '../type'
-import LOGOUT from '../type'
+import { LOGIN, LOGOUT, SAVE } from '../type'
 export function loginAction(data) {
     return {
         type: LOGIN,
@@ -9,6 +8,11 @@ export function loginAction(data) {
 export function logoutAction() {
     return {
         type: LOGOUT,
-
+    }
+}
+export function saveInfoAction(data) {
+    return {
+        type: SAVE,
+        payload: data
     }
 }

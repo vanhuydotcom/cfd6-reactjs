@@ -24,92 +24,36 @@ import store from './redux'
 import PopupRegister from './component/PopupRegister'
 export let Context = React.createContext({})
 function App() {
-  // let login = {
-  //   name: 'Văn Huy',
-  //   avatar: '/img/avt.png'
-  // }
 
-  let [state, setState] = useState({
-    // login: false
-    login: JSON.parse(localStorage.getItem('login'))
-  })
-  useEffect(() => {
-    localStorage.setItem('login', JSON.stringify(state.login))
-  }, [state.login])
-  async function handleLogin(username, password) {
-    try {
-      let res = await Auth.login({ username, password })
-
-      if (res.data) {
-        setState({
-          ...state,
-          login: res.data
-        })
-        return {
-          success: true
-        }
-      } else if (res.error) {
-        return {
-          error: res.error
-        }
-      }
-
-    } catch (err) {
-
-    }
-    //   if (username === 'dvhuy.design@gmail.com' && password === '123456') {
-    //     setState({
-    //       ...state,
-    //       login: {
-    //         name: 'Văn Huy',
-    //         avatar: '/img/avt.png'
-    //       }
-    //     })
-    //     // localStorage.setItem('login', JSON.stringify({
-    //     //   name: 'Văn Huy',
-    //     //   avatar: '/img/avt.png'
-    //     // }))
-    //   } else {
-    //     return 'Wrong login information'
-    //   }
-    // }
-  }
-  // function handleLogout() {
-  //   setState({
-  //     ...state,
-  //     login: false
-  //   })
-  //   // localStorage.setItem('login', false)
-  // }
 
   return (
     <Provider store={store}>
-      <Context.Provider value={{ ...state, handleLogin }}>
-        <BrowserRouter>
-          <div className="App">
-            <Header />
-            <Nav />
-            <PopupLogin />
-            <PopupRegister />
-            <Switch>
-              <Route exact path='/' component={Home} />
-              <Route path='/coin' component={Coin} />
-              <Route path='/khoa-hoc' component={Course} />
-              <Route path='/chi-tiet-khoa-hoc/:slug' component={CourseDetail} />
-              <Route path='/dang-ky-thanh-cong' component={Email} />
-              <Route path='/cau-hoi-thuong-gap' component={Faq} />
-              <Route path='/lien-he' component={Partner} />
-              <PrivateRoute path='/ca-nhan' component={Profile} />
-              <Route path='/du-an' component={Project} />
-              <Route path='/dang-ky/:slug' component={Register} />
-              <Route path='/doi-ngu' component={MyTeam} />
-              <Route path='/thanh-toan' component={Payment} />
-              <Route component={Error} />
-            </Switch>
-            <Footer />
-          </div>
-        </BrowserRouter>
-      </Context.Provider>
+
+      <BrowserRouter>
+        <div className="App">
+          <Header />
+          <Nav />
+          <PopupLogin />
+          <PopupRegister />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/coin' component={Coin} />
+            <Route path='/khoa-hoc' component={Course} />
+            <Route path='/chi-tiet-khoa-hoc/:slug' component={CourseDetail} />
+            <Route path='/dang-ky-thanh-cong' component={Email} />
+            <Route path='/cau-hoi-thuong-gap' component={Faq} />
+            <Route path='/lien-he' component={Partner} />
+            <PrivateRoute path='/ca-nhan' component={Profile} />
+            <Route path='/du-an' component={Project} />
+            <Route path='/dang-ky/:slug' component={Register} />
+            <Route path='/doi-ngu' component={MyTeam} />
+            <Route path='/thanh-toan' component={Payment} />
+            <Route component={Error} />
+          </Switch>
+          <Footer />
+        </div>
+      </BrowserRouter>
+
     </Provider>
   );
 }

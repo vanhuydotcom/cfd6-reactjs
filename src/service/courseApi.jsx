@@ -19,13 +19,16 @@ const CourseApi = {
 
         }).then(res => res.json())
     },
-    CourseRegister(slug, data) {
+    CourseRegister(login, slug) {
+        let { token } = JSON.parse(localStorage.getItem("login"))
         return fetch(`${endpoint}/elearning/v4/course-register/${slug}`, {
             method: 'POST',
-            body: JSON.stringify(data),
+            body: JSON.stringify(login),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token.accessToken}`
             }
+
         }).then(res => res.json())
     }
 }

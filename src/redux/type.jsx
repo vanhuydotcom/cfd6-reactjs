@@ -1,8 +1,6 @@
-const LOGIN = 'LOGIN'
-const LOGOUT = 'LOGOUT'
-const REGISTER = 'REGISTER'
-export default {
-    LOGIN,
-    LOGOUT,
-    REGISTER
-}
+export const LOGIN = 'LOGIN'
+export const LOGOUT = 'LOGOUT'
+export const REGISTER = 'REGISTER'
+export const SAVE = 'SAVE'
+
+

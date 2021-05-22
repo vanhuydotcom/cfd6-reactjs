@@ -44,21 +44,11 @@ export default function PopupLogin() {
     async function loginHandle() {
         let errorObject = check()
         if (Object.keys(errorObject).length === 0) {
-            // let res = await handleLogin(form.username, form.password)
-            // if (res.success) {
-            //     closePopup()
-            // } else if (res.error) {
-            //     setLoginError(res.error)
-            // }
             let res = await Auth.login({
                 username: form.username,
                 password: form.password
             })
             if (res.data) {
-                // dispatch({
-                //     type: 'LOGIN',
-                //     payload: res.data
-                // })
                 dispatch(loginAction(res.data))
                 closePopup()
             }

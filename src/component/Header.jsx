@@ -1,8 +1,7 @@
 
-import Reat, { useState, useRef, useContext } from 'react'
+import React, { useState, useRef, useContext } from 'react'
 import { Link, Route, useRouteMatch } from 'react-router-dom'
 import useDeLayLink from '../hook/useDelayLink'
-import { Context } from '../App'
 import { useSelector, useDispatch } from 'react-redux'
 import { logoutAction } from '../redux/action/authAction'
 import LOGOUT from '../redux/type'
@@ -12,7 +11,6 @@ export function Header() {
     let delayLink = useDeLayLink()
     function menuToggle() {
         document.body.classList.toggle('menu-is-show')
-
     }
     // let { handleLogout } = useContext(Context)
     function popupLogin() {

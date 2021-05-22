@@ -1,30 +1,31 @@
 import React, { useEffect, useRef, useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import useFormValidate from '../../hook/useFormValidate'
 import CourseApi from "../../service/courseApi"
 import { RegisterAction } from '../../redux/action/courseAction'
 import { useParams } from "react-router"
 
 
-
-
-export function Register({ data }) {
+export function Register() {
     let { slug } = useParams()
-    let [ListDetail, setListDetail] = useState({
-        data: []
+    let [course, setCourse] = useState({
+        courseInfo: {},
+        register: ""
     })
+    let data = useSelector((state) => state.auth)
+    let { login } = useSelector((state) => state.auth)
     useEffect(() => {
         CourseApi.ListDetail(slug)
             .then(res => {
-                setListDetail(res)
+                setCourse({
+                    ...course,
+                    courseInfo: res.data,
+                    err: false
+                })
             })
     }, [])
-    console.log(data);
     let { form, error, inputChange, check } = useFormValidate({
-        name: "",
-        phone: "",
-        email: "",
-        fb: "",
+        ...login
 
     }, {
         rule: {
@@ -66,30 +67,28 @@ export function Register({ data }) {
 
         }
     })
-    let dispatch = useDispatch()
-    let [registerError, setRegisterError] = useState(null)
-
-
-
     async function onSubmit() {
         let errorObject = check()
         if (Object.keys(errorObject).length === 0) {
-            let res = await CourseApi.CourseRegister({
-                name: form.name,
-                phone: form.phone,
-                email: form.email,
-                fb: form.fb,
-            })
-            if (res.data) {
-                dispatch(RegisterAction(res.data))
+            let res = await CourseApi.CourseRegister(form, slug)
+            console.log(form);
+            if (res.success) {
+                setCourse({
+                    ...course,
+                    register: res.success,
+                    err: true
+                })
 
             }
             else if (res.error) {
-                setRegisterError(res.error)
+                setCourse({
+                    ...course,
+                    register: res.error
+                })
             }
-            console.log(data);
         }
     }
+
 
     return (
         <main className="register-course" id="main">
@@ -97,11 +96,11 @@ export function Register({ data }) {
                 <div className="container">
                     <div className="wrap container">
                         <div className="main-sub-title">ĐĂNG KÝ</div>
-                        <h1 className="main-title">{data?.title}</h1>
+                        <h1 className="main-title">{course?.courseInfo?.title}</h1>
                         <div className="main-info">
-                            <div className="date"><strong>Khai giảng:</strong>{data?.opening_time}</div>
+                            <div className="date"><strong>Khai giảng:</strong> {course?.courseInfo?.opening_time}</div>
                             <div className="time"><strong>Thời lượng:</strong> 18 buổi</div>
-                            <div className="time"><strong>Học phí:</strong> {data?.money} VND</div>
+                            <div className="time"><strong>Học phí:</strong> {course?.courseInfo?.money} VND</div>
                         </div>
                         <div className="form">
                             <label>

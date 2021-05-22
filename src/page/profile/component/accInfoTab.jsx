@@ -1,10 +1,12 @@
 import React, { useRef, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import useFormValidate from '../../../hook/useFormValidate';
+import { saveInfoAction } from '../../../redux/action/authAction';
+import Auth from '../../../service/auth'
 export default function AccInfoTab() {
-    let { login } = useSelector(state => state.auth)
-    console.log(login)
-
+    let { login } = useSelector(store => store.auth)
+    let dispatch = useDispatch()
+    let [saveInfo, setSaveInfo] = useState()
     let { form, error, inputChange, check } = useFormValidate({
         ...login
     }, {
@@ -22,7 +24,7 @@ export default function AccInfoTab() {
             },
             fb: {
                 require: true,
-                pattern: 'website'
+                pattern: 'fb'
             }
 
         },
@@ -38,7 +40,7 @@ export default function AccInfoTab() {
                 require: 'Enter your email',
                 pattern: 'Email is not valid'
             },
-            facebook: {
+            fb: {
                 require: 'Enter your Url facebook',
                 pattern: 'Url facebook is not valid'
             },
@@ -47,10 +49,20 @@ export default function AccInfoTab() {
         }
     })
 
-    function onSubmit() {
+    async function onSubmit() {
         let errorObject = check()
         if (Object.keys(errorObject).length === 0) {
-            console.log(form);
+            let res = await Auth.saveInfo({
+                name: form.name,
+                phone: form.phone,
+                email: form.email,
+                fb: form.fb
+            })
+            if (res.data) {
+                dispatch(saveInfoAction(res.data))
+            } else if (res.error) {
+                setSaveInfo(res.error)
+            }
         }
     }
     return (
@@ -71,14 +83,14 @@ export default function AccInfoTab() {
             </label>
             <label>
                 <p>Email<span>*</span></p>
-                <input value={form.email} name="email" onChange={inputChange} type="text" placeholder="Dvhuy.dev@gmail.com" />
+                <input disabled value={login.email} name="email" onChange={inputChange} type="text" placeholder="Dvhuy.dev@gmail.com" />
                 {
                     error.email && <p className="error_text">{error.email}</p>
                 }
             </label>
             <label>
                 <p>Facebook<span>*</span></p>
-                <input value={form.fb} name="facebook" onChange={inputChange} type="text" placeholder="Facebook url" />
+                <input value={form.fb} name="fb" onChange={inputChange} type="text" placeholder="Facebook url" />
                 {
                     error.fb && <p className="error_text">{error.fb}</p>
                 }

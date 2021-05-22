@@ -1,4 +1,4 @@
-import REGISTER from '../type'
+import { REGISTER } from '../type'
 
 let initState = {
     register: JSON.parse(localStorage.getItem('register'))
