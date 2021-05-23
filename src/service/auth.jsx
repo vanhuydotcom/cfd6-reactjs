@@ -1,8 +1,7 @@
 import { endpoint } from './config'
 const Auth = {
     async refreshToken() {
-        let refreshToken = JSON.parse(localStorage.getItem("token"))?.refreshToken
-
+        let refreshToken = JSON.parse(localStorage.getItem("login"))?.token?.refreshToken
         let res = await fetch(`${endpoint}/elearning/v4/refresh-token`, {
             method: 'POST',
             body: JSON.stringify({
@@ -38,7 +37,7 @@ const Auth = {
         })
         if (res.status === 200) {
             return res.json()
-        }
+        };
         if (res.status === 403) {
             await Auth.refreshToken()
             let token = JSON.parse(localStorage.getItem("token"))?.accessToken
@@ -52,6 +51,7 @@ const Auth = {
                 }
             }).then(res => res.json())
         }
+        console.log(token.accessToken);
     }
 }
 export default Auth

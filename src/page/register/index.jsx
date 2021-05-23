@@ -7,6 +7,7 @@ import { useParams } from "react-router"
 
 
 export function Register() {
+    let dispatch = useDispatch()
     let { slug } = useParams()
     let [course, setCourse] = useState({
         courseInfo: {},
@@ -42,9 +43,8 @@ export function Register() {
             },
             fb: {
                 require: true,
-                pattern: 'facebook'
+                pattern: 'fb'
             },
-
 
         },
         mes: {
@@ -62,7 +62,7 @@ export function Register() {
             fb: {
                 require: 'Enter your Url facebook',
                 pattern: 'Url facebook is not valid'
-            }
+            },
 
 
         }
@@ -71,7 +71,6 @@ export function Register() {
         let errorObject = check()
         if (Object.keys(errorObject).length === 0) {
             let res = await CourseApi.CourseRegister(form, slug)
-            console.log(form);
             if (res.success) {
                 setCourse({
                     ...course,
@@ -137,7 +136,7 @@ export function Register() {
                                     Hiện có <strong>300 COIN</strong>
                                     {/* Giảm giá còn <span><strong>5.800.000 VND</strong>, còn lại 100 COIN</span> */}
                                     {/* Cần ít nhất 200 COIN để giảm giá */}
-                                    <input type="checkbox" defaultChecked="checked" />
+                                    <input type="checkbox" name="ckecked" defaultChecked="checked" />
                                     <span className="checkmark" />
                                 </div>
                             </label>
@@ -155,6 +154,11 @@ export function Register() {
                                 <p>Ý kiến cá nhân</p>
                                 <input type="text" placeholder="Mong muốn cá nhân và lịch bạn có thể học." />
                             </label>
+                            {course.register && (
+                                <h2 style={{ color: `${course.err ? "#00afab" : "red"}` }}>
+                                    {course.register}
+                                </h2>
+                            )}
                             <div className="btn main rect" onClick={onSubmit}>đăng ký</div>
                         </div>
                     </div>

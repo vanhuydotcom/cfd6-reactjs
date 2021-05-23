@@ -10,7 +10,6 @@ export default function useDeLayLink() {
 
         setTimeout(() => {
             history.push(href)
-
         }, 500)
         document.body.classList.remove('menu-is-show')
     }
